@@ -1,9 +1,40 @@
 let buttonsQty = document.querySelectorAll('button').length;
-var tom1Audio = new Audio('/webdevcourse/drumkit/sounds/tom-1.mp3')
 
 for (i = 0; i < buttonsQty; i++) {
     document.querySelectorAll('.drum')[i].addEventListener('click', function () {
-        tom1Audio.play();
-        this.style.color = "white";
+        let btnPressed = this.innerHTML;
+        switch (btnPressed) {
+            case "w":
+                let tom1 = new Audio('sounds/tom-1.mp3');
+                tom1.play();
+                break;
+            case "a":
+                let tom2 = new Audio('sounds/tom-2.mp3');
+                tom2.play();
+                break;
+            case "s":
+                let tom3 = new Audio('sounds/tom-3.mp3');
+                tom3.play();
+                break;
+            case "d":
+                let tom4 = new Audio('sounds/tom-4.mp3');
+                tom4.play();
+                break;
+            case "j":
+                let snare = new Audio('sounds/snare.mp3');
+                snare.play();
+                break;
+            case "k":
+                let crash = new Audio('sounds/crash.mp3');
+                crash.play();
+                break;
+            case "l":
+                let kick = new Audio('sounds/kick-bass.mp3');
+                kick.play();
+                break;
+            default:
+                break;
+        
+        }
     })
 }
