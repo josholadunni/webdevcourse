@@ -11,6 +11,7 @@ let yellowAudio = new Audio("sounds/yellow.mp3");
 
 function nextSequence() {
   let randomNumber = Math.floor(Math.random() * 4);
+  playSound(buttonColours[randomNumber]);
   return randomNumber;
 }
 
@@ -24,6 +25,8 @@ $("#" + randomChosenColour)
 
 let userChosenColour = $(".btn").on("click", function () {
   userChosenColour = this.id;
+  playSound(this.id);
+  animatePress(this.id);
   userClickedPattern.push(userChosenColour);
   console.log(userClickedPattern);
 });
@@ -38,6 +41,10 @@ function playSound(name) {
   } else {
     redAudio.play();
   }
+}
+
+function animatePress(currentColour) {
+  $("#" + currentColour).addClass("pressed");
 }
 
 // $("#level-title").on("click", function () {
