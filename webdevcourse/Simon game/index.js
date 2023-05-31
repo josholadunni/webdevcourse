@@ -10,18 +10,15 @@ let redAudio = new Audio("sounds/red.mp3");
 let yellowAudio = new Audio("sounds/yellow.mp3");
 
 function nextSequence() {
+  console.log("Sequence running");
   let randomNumber = Math.floor(Math.random() * 4);
+  let randomChosenColour = buttonColours[randomNumber];
   playSound(buttonColours[randomNumber]);
-  return randomNumber;
+  gamePattern.push(randomChosenColour);
+  $("#" + randomChosenColour)
+    .fadeOut(100)
+    .fadeIn(100);
 }
-
-let randomChosenColour = buttonColours[nextSequence()];
-
-gamePattern.push(randomChosenColour);
-
-$("#" + randomChosenColour)
-  .fadeOut(100)
-  .fadeIn(100);
 
 let userChosenColour = $(".btn").on("click", function () {
   userChosenColour = this.id;
@@ -52,7 +49,7 @@ function animatePress(currentColour) {
 
 const isStarted = false;
 
-$(document).on("keyPress", function () {
+$(document).on("keypress", function () {
   if (!isStarted) {
     nextSequence();
   }
