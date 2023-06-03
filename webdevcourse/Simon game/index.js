@@ -4,6 +4,9 @@ let gamePattern = [];
 
 let userClickedPattern = [];
 
+let levelTitle = $("#level-title");
+let level = 0;
+
 let blueAudio = new Audio("sounds/blue.mp3");
 let greenAudio = new Audio("sounds/green.mp3");
 let redAudio = new Audio("sounds/red.mp3");
@@ -19,6 +22,8 @@ function nextSequence() {
   $("#" + randomChosenColour)
     .fadeOut(100)
     .fadeIn(100);
+  level += 1;
+  levelTitle.text("Level " + level);
 }
 
 //Lets the user choose a colour, plays audio & animation and adds it to the user pattern array.
@@ -53,17 +58,14 @@ function animatePress(currentColour) {
   }, 100);
 }
 
-//Sets a boolean value to track if the game has been started and runs nextSequence() if false, then sets the variable to true.
+//Starts the game. Sets a boolean value to track if the game has been started and runs nextSequence() if false, then sets the variable to true.
 
 let isStarted = false;
 
 $(document).on("keypress", function () {
   if (isStarted == false) {
+    levelTitle.text("Level " + level);
     nextSequence();
     isStarted = true;
   }
 });
-
-// $("#level-title").on("click", function () {
-//   alert(userChosenColour);
-// });
