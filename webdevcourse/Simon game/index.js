@@ -9,8 +9,9 @@ let greenAudio = new Audio("sounds/green.mp3");
 let redAudio = new Audio("sounds/red.mp3");
 let yellowAudio = new Audio("sounds/yellow.mp3");
 
+//Choose the next random colour, add it to the game pattern array and animate the button.
+
 function nextSequence() {
-  console.log("Sequence running");
   let randomNumber = Math.floor(Math.random() * 4);
   let randomChosenColour = buttonColours[randomNumber];
   playSound(buttonColours[randomNumber]);
@@ -20,13 +21,16 @@ function nextSequence() {
     .fadeIn(100);
 }
 
+//Lets the user choose a colour, plays audio & animation and adds it to the user pattern array.
+
 let userChosenColour = $(".btn").on("click", function () {
   userChosenColour = this.id;
   playSound(this.id);
   animatePress(this.id);
   userClickedPattern.push(userChosenColour);
-  console.log(userClickedPattern);
 });
+
+//Plays a sound depending on the content of the colour string passed to the function.
 
 function playSound(name) {
   if (name === "blue") {
@@ -40,6 +44,8 @@ function playSound(name) {
   }
 }
 
+//Paired with an on click function to animate a button depending on the value passed to this function.
+
 function animatePress(currentColour) {
   $("#" + currentColour).addClass("pressed");
   setTimeout(function () {
@@ -47,11 +53,14 @@ function animatePress(currentColour) {
   }, 100);
 }
 
-const isStarted = false;
+//Sets a boolean value to track if the game has been started and runs nextSequence() if false, then sets the variable to true.
+
+let isStarted = false;
 
 $(document).on("keypress", function () {
-  if (!isStarted) {
+  if (isStarted == false) {
     nextSequence();
+    isStarted = true;
   }
 });
 
