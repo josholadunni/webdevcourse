@@ -69,3 +69,11 @@ $(document).on("keypress", function () {
     isStarted = true;
   }
 });
+
+//
+
+function checkAnswer(currentLevel) {
+  
+}
+
+
