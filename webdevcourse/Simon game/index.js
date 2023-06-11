@@ -33,6 +33,7 @@ let userChosenColour = $(".btn").on("click", function () {
   playSound(this.id);
   animatePress(this.id);
   userClickedPattern.push(userChosenColour);
+  checkAnswer(userClickedPattern[userClickedPattern.length - 1]);
 });
 
 //Plays a sound depending on the content of the colour string passed to the function.
@@ -70,10 +71,18 @@ $(document).on("keypress", function () {
   }
 });
 
-//
+//Checks if the last item in the user pattern array is equivalent to the last item in the game pattern array.
 
 function checkAnswer(currentLevel) {
-  
+  if (currentLevel == gamePattern[gamePattern.length - 1]) {
+    // Checks if the user has finished their sequence by checking the 2 arrays are the same length.
+    if (userClickedPattern.length == gamePattern.length) {
+      setTimeout(function () {
+        nextSequence();
+        userClickedPattern = [];
+      }, 1000);
+    }
+  } else {
+    console.log("fail");
+  }
 }
-
-
