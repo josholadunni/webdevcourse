@@ -11,6 +11,7 @@ let blueAudio = new Audio("sounds/blue.mp3");
 let greenAudio = new Audio("sounds/green.mp3");
 let redAudio = new Audio("sounds/red.mp3");
 let yellowAudio = new Audio("sounds/yellow.mp3");
+let incorrectAudio = new Audio("sounds/wrong.mp3");
 
 //Choose the next random colour, add it to the game pattern array and animate the button.
 
@@ -59,6 +60,14 @@ function animatePress(currentColour) {
   }, 100);
 }
 
+//Restarts the game
+
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  isStarted = false;
+}
+
 //Starts the game. Sets a boolean value to track if the game has been started and runs nextSequence() if false, then sets the variable to true.
 
 let isStarted = false;
@@ -71,18 +80,23 @@ $(document).on("keypress", function () {
   }
 });
 
-//Checks if the last item in the user pattern array is equivalent to the last item in the game pattern array.
+//Checks if the last item in the user pattern array is equivalent to the last item in the game pattern array. If they match, the next sequence is generated and the user input array is cleared. If wrong, a specific audio is played and a game over class is toggled.
 
 function checkAnswer(currentLevel) {
-  if (currentLevel == gamePattern[gamePattern.length - 1]) {
-    // Checks if the user has finished their sequence by checking the 2 arrays are the same length.
-    if (userClickedPattern.length == gamePattern.length) {
+  if (currentLevel === gamePattern[gamePattern.length - 1]) {
+    // Checks if the user has finished their sequence by checking if the last entries in both arrays are the same.
+    if (userClickedPattern.length === gamePattern.length) {
       setTimeout(function () {
         nextSequence();
         userClickedPattern = [];
       }, 1000);
     }
   } else {
-    console.log("fail");
+    incorrectAudio.play();
+    $("body").addClass("game-over");
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 200);
+    startOver();
   }
 }
