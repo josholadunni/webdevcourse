@@ -1,0 +1,31 @@
+body {
+  padding: 0 !important;
+}
+
+.main-ui-group {
+  padding: 1.5rem 10rem 0 10rem !important;
+}
+
+.main-ui-button-group {
+}
+
+.main-ui-button {
+  background-color: #eef4ee;
+}
+
+.jobs-group {
+  background-color: #84967e;
+}
+
+.btn-filter {
+}
+
+.notes-group {
+  background-color: #dfe9dc;
+}
+
+.padded-row {
+}
+
+.padded-sides {
+}
