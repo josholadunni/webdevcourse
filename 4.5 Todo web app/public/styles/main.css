@@ -1,0 +1,95 @@
+body {
+  padding: 0 !important;
+}
+
+.main-ui-group {
+  padding: 1.5rem 10rem 0 10rem !important;
+}
+
+.main-ui-button {
+  background-color: #eef4ee;
+  margin: 1rem 0;
+  height: 150px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-ui-button p {
+  margin: 0 auto;
+}
+
+.main-ui-button-radio {
+  position: absolute;
+  bottom: 20px;
+}
+
+.jobs-group {
+  background-color: #84967e;
+  border-radius: 30px 30px 0 0;
+}
+
+.jobs-header-row {
+  align-items: center;
+}
+
+.jobs-group-header {
+  color: #eef4ee;
+}
+
+.btn-row {
+  max-width: 400px;
+  padding-top: 1rem;
+}
+
+.btn-filter {
+  text-decoration: none;
+  background-color: #a8bba1;
+  border: none;
+  width: 100px;
+  border-radius: 6.5px;
+}
+
+.btn-filter-active {
+  background-color: #eef4ee;
+}
+
+.notes-group {
+  background-color: #dfe9dc;
+}
+
+.notes-group-header {
+  color: #556454;
+}
+
+.padded-row {
+  padding: 2rem 1rem 0 1rem;
+}
+
+.col-left {
+  margin-right: 1rem;
+}
+
+.radio {
+  margin: 0.5rem;
+  position: absolute;
+  opacity: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.radio {
+  margin: 0.5rem;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  background-color: teal;
+  border-radius: 50%;
+}
