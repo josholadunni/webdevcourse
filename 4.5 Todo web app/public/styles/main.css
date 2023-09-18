@@ -12,17 +12,29 @@ body {
   height: 150px;
   border-radius: 11px;
   display: flex;
-  align-items: center;
+  justify-content: center;
   position: relative;
+  width: 100%;
 }
 
 .main-ui-button p {
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .main-ui-button-radio {
-  position: absolute;
-  bottom: 20px;
+}
+
+.button-row-higher {
+  height: 75%;
+  align-items: center;
+  overflow: scroll;
+}
+
+.button-row-lower {
+  height: 25%;
+  align-items: center;
+  overflow: scroll;
 }
 
 .jobs-group {
@@ -88,8 +100,10 @@ body {
 }
 
 .circle {
-  width: 200px;
-  height: 200px;
-  background-color: teal;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
+  border-style: solid;
+  border-color: #84967e;
+  margin: 0 auto;
 }
