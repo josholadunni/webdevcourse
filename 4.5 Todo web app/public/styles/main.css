@@ -15,6 +15,7 @@ body {
   justify-content: center;
   position: relative;
   width: 100%;
+  padding-top: 12px;
 }
 
 .main-ui-button p {
@@ -76,6 +77,10 @@ body {
   color: #556454;
 }
 
+.notes-group-container {
+  margin-bottom: 4rem;
+}
+
 .padded-row {
   padding: 2rem 1rem 0 1rem;
 }
@@ -107,4 +112,8 @@ body {
   border-style: solid;
   border-color: #84967e;
   margin: 0 auto;
+}
+
+footer {
+  margin-top: auto;
 }
