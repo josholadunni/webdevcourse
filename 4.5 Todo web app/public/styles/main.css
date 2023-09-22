@@ -16,11 +16,11 @@ body {
   position: relative;
   width: 100%;
   padding-top: 12px;
+  overflow: hidden;
 }
 
 .main-ui-button p {
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .main-ui-button-radio {
@@ -29,13 +29,11 @@ body {
 .button-row-higher {
   height: 75%;
   align-items: center;
-  overflow: scroll;
 }
 
 .button-row-lower {
   height: 25%;
   align-items: center;
-  overflow: scroll;
 }
 
 .jobs-group {
@@ -101,6 +99,7 @@ body {
   justify-content: center;
   min-height: 100vh;
 }
+
 .radio {
   margin: 0.5rem;
 }
