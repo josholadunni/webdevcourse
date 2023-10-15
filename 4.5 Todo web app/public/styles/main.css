@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -8,6 +12,7 @@ body {
 .main-row {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .date-section {
@@ -50,12 +55,20 @@ body {
 }
 
 .main-ui-group {
-  padding: 0 2rem !important;
+  padding: 0 1rem !important;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .main-ui {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-button {
@@ -93,7 +106,6 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 25%;
   overflow: hidden;
 }
 
@@ -114,6 +126,78 @@ body {
   background-color: #84967e;
   border-radius: 30px 30px 0 0;
   padding-bottom: 1.5rem;
+  width: 100%;
+}
+
+.add-job-group {
+  background-color: #424b3f;
+  border-radius: 30px 30px 0 0;
+  padding-bottom: 1.5rem;
+  width: 100%;
+  display: none !important;
+}
+
+.add-job-container {
+  padding: 1rem;
+}
+
+.add-job-label {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.add-job-field {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #eef4ee;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #353535;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 0.5rem;
+}
+
+.add-job-field:hover {
+  background-color: #ffffff;
+}
+
+.add-job-field:active {
+  background-color: #ffffff;
+}
+
+.add-job-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-job-field-button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #424b3f;
+  background-color: #eef4ee;
+  border-radius: 10px;
+}
+
+.cancel-job-field-button:hover {
+  background-color: #ffffff;
+}
+
+.add-job-field-button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #424b3f;
+  background-color: #424b3f;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.add-job-btn {
+  margin: 0 0.5rem 1rem 0.5rem;
+}
+
+.add-job-form {
 }
 
 .jobs-header-row {
@@ -122,6 +206,7 @@ body {
 
 .jobs-group-header {
   color: #eef4ee;
+  text-align: left;
 }
 
 .btn-row {
@@ -148,10 +233,12 @@ body {
 .notes-group {
   background-color: #dfe9dc;
   height: 100%;
+  width: 100%;
 }
 
 .notes-group-header {
   color: #556454;
+  text-align: left;
 }
 
 .notes-group-container {
@@ -186,6 +273,18 @@ body {
   border-width: 1.5px;
   border-color: #84967e;
   margin: 0 auto;
+}
+
+.add-note-group-header {
+  color: #ffffff;
+  text-align: left;
+}
+
+.add-note-group {
+  background-color: #a7afa5;
+  padding-bottom: 1.5rem;
+  width: 100%;
+  display: none !important;
 }
 
 footer {

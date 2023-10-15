@@ -45,7 +45,7 @@
         <p><span>6</span> tasks due</p>
       </div>
 
-      <div class="col-sm-12 col-md-7 col-lg-6 col-xl-6 main-ui-group">
+      <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 main-ui-group">
         <div class="container main-ui">
 
           <div class="row jobs-group">
@@ -115,6 +115,42 @@
             </div>
           </div>
 
+          <div class="row add-job-group">
+            <div class="container">
+              <div class="row jobs-header-row padded-row">
+                <div class="col text-center">
+                  <h2 class="jobs-group-header">Jobs</h2>
+                </div>
+                <div class="col text-center">
+                  <span class="add-button">
+                    <span>+</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row padded-row justify-content-center text-center buttons-row">
+
+                <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+                  <div class="container add-job-container">
+                    <h6 class="add-job-label">Add Job</h6>
+
+                    <form class="add-job-form" action="/submit-job" method="POST">
+                      <input type="text" id="add-job-field" class="add-job-field" name="Add-job" required>
+                      <br>
+                      <div class="row add-job-btn-row">
+                        <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
+                        <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Task">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+
+              </div>
+
+            </div>
+          </div>
 
           <div class="row notes-group text-center">
             <div class="container">
@@ -146,6 +182,43 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="row add-note-group">
+            <div class="container">
+              <div class="row jobs-header-row padded-row">
+                <div class="col text-center">
+                  <h2 class="jobs-group-header">Notes</h2>
+                </div>
+                <div class="col text-center">
+                  <span class="add-button">
+                    <span>+</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row padded-row justify-content-center text-center buttons-row">
+
+                <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+                  <div class="container add-job-container">
+                    <h6 class="add-job-label">Add Note</h6>
+
+                    <form class="add-job-form" action="/submit-note" method="POST">
+                      <input type="text" id="add-note-field" class="add-job-field" name="Add-note" required>
+                      <br>
+                      <div class="row add-job-btn-row">
+                        <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
+                        <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Note">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+
+              </div>
+
             </div>
           </div>
 
