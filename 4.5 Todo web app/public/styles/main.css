@@ -18,6 +18,11 @@ body {
   justify-content: center;
 }
 
+.current-day {
+  background-color: #586454 !important;
+  color: white;
+}
+
 .days-of-week {
   padding-left: 0;
   display: flex;
@@ -132,6 +137,10 @@ body {
   border-radius: 6.5px;
 }
 
+.btn-filter:hover {
+  background-color: #cbd6c7;
+}
+
 .btn-filter-active {
   background-color: #eef4ee;
 }
@@ -156,7 +165,7 @@ body {
 }
 
 .padded-row {
-  padding: 2rem 1rem 0 1rem;
+  padding: 2rem 1.5rem 0 1.5rem;
 }
 
 .radio {
@@ -180,6 +189,8 @@ body {
 }
 
 footer {
-  position: relative;
-  top: 10px;
+  position: absolute;
+  bottom: 1px;
+  left: 15px;
+  font-size: 0.75rem;
 }
