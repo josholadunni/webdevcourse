@@ -71,7 +71,8 @@ $(".days-of-week li span").each(function () {
 
 //Click on each list button to display each list
 
-let currentList = "";
+// let currentList = ""
+// ;
 
 $(".list-button button").each(function () {
   $(this).on("click", function () {
@@ -81,6 +82,20 @@ $(".list-button button").each(function () {
 
     currentList = $(this).attr("id");
 
-    console.log(currentList);
+    let redirectUrl;
+    if (currentList === "to-do-btn") {
+      redirectUrl = "/";
+    } else if (currentList === "missed-btn") {
+      redirectUrl = "/missed";
+    } else if (currentList === "completed-btn") {
+      redirectUrl = "/completed";
+    }
+
+    $.post("/setCurrentList", { currentList }, function (res) {
+      console.log(res);
+      window.location.href = redirectUrl;
+    });
   });
 });
+
+console.log(cheese);

@@ -1,234 +1,86 @@
 <%- include("partials/header.ejs") %>
 
-<main role="main">
-  <div class="container-fluid">
-    <div class="row main-row">
-      <div class="col-12 date-section">
-        <p id="date-tagline">Monday 16th October</p>
-        <ul class="days-of-week">
-          <li>
-            <span id="day1" class="current-day">
-              9
-            </span>
-          </li>
-          <li>
-            <span id="day2">
-              10
-            </span>
-          </li>
-          <li>
-            <span id="day3">
-              11
-            </span>
-          </li>
-          <li>
-            <span id="day4">
-              12
-            </span>
-          </li>
-          <li>
-            <span id="day5">
-              13
-            </span>
-          </li>
-          <li>
-            <span id="day6">
-              14
-            </span>
-          </li>
-          <li>
-            <span id="day7">
-              15
-            </span>
-          </li>
-        </ul>
-        <p><span id="number-of-jobs">6</span> tasks due</p>
+<%- include("partials/date.ejs") %>
+
+<%- include("partials/jobs.ejs") %>
+
+<div class="row notes-group text-center">
+  <div class="container">
+    <div class="row padded-row">
+      <div class="col">
+        <h2 class="notes-group-header">Notes</h2>
       </div>
-
-      <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 main-ui-group">
-        <div class="container main-ui">
-
-          <div class="row jobs-group">
-            <div class="container">
-              <div class="row jobs-header-row padded-row">
-                <div class="col text-center">
-                  <h2 class="jobs-group-header">Jobs</h2>
-                </div>
-                <div class="col text-center">
-                  <span class="add-button">
-                    <span>+</span>
-                  </span>
-                </div>
-              </div>
-              <div class="row justify-content-center btn-row text-center mx-auto">
-                <div class="col-4 text-center list-button">
-                  <button id="to-do-btn" class="btn-filter btn-filter-active">To-do</button>
-                </div>
-                <div class="col-4 text-center list-button">
-                  <button id="missed-btn" class="btn-filter">Missed</button>
-                </div>
-                <div class="col-4 text-center list-button">
-                  <button id="completed-btn" class="btn-filter">Completed</button>
-                </div>
-              </div>
-
-              <div class="row padded-row justify-content-center text-center buttons-row">
-
-                <!-- <div id="up-to-date" class="col-12 main-ui-button">
-                  <div class="container up-to-date">
-                    <p>
-                      Up to date
-                    </p>
-                  </div>
-                </div> -->
-
-                <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
-                  <div class="container">
-                    <div class="row button-text-row">
-                      <p>
-                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                      </p>
-                    </div>
-                    <div class="main-ui-button-radio">
-                      <div class="circle"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
-                  <div class="container">
-                    <div class="row button-text-row">
-                      <p>
-                        Lorem ipsum
-                      </p>
-                    </div>
-                    <div class="main-ui-button-radio">
-                      <div class="circle"></div>
-                    </div>
-                  </div>
-                </div> -->
-
-
-
-              </div>
-
-            </div>
+      <div class="col">
+        <span class="add-button">
+          <span>
+            +
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="row padded-sides">
+      <div class="container notes-group-container">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            Lorem
+            <hr>
           </div>
-
-          <div class="row add-job-group">
-            <div class="container">
-              <div class="row jobs-header-row padded-row">
-                <div class="col text-center">
-                  <h2 class="jobs-group-header">Jobs</h2>
-                </div>
-                <div class="col text-center">
-                  <span class="add-button">
-                    <span>+</span>
-                  </span>
-                </div>
-              </div>
-
-              <div class="row padded-row justify-content-center text-center buttons-row">
-
-                <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
-                  <div class="container add-job-container">
-                    <h6 class="add-job-label">Add Job</h6>
-
-                    <form class="add-job-form" action="/submit-job" method="POST">
-                      <input type="text" id="add-job-field" class="add-job-field" name="Add-job" required>
-                      <br>
-                      <div class="row add-job-btn-row">
-                        <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
-                        <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Task">
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-
-
-              </div>
-
-            </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-8">
+            Lorem
+            <hr>
           </div>
-
-          <div class="row notes-group text-center">
-            <div class="container">
-              <div class="row padded-row">
-                <div class="col">
-                  <h2 class="notes-group-header">Notes</h2>
-                </div>
-                <div class="col">
-                  <span class="add-button">
-                    <span>
-                      +
-                    </span>
-                  </span>
-                </div>
-              </div>
-              <div class="row padded-sides">
-                <div class="container notes-group-container">
-                  <div class="row justify-content-center">
-                    <div class="col-8">
-                      Lorem
-                      <hr>
-                    </div>
-                  </div>
-                  <div class="row justify-content-center">
-                    <div class="col-8">
-                      Lorem
-                      <hr>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row add-note-group">
-            <div class="container">
-              <div class="row jobs-header-row padded-row">
-                <div class="col text-center">
-                  <h2 class="jobs-group-header">Notes</h2>
-                </div>
-                <div class="col text-center">
-                  <span class="add-button">
-                    <span>+</span>
-                  </span>
-                </div>
-              </div>
-
-              <div class="row padded-row justify-content-center text-center buttons-row">
-
-                <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
-                  <div class="container add-job-container">
-                    <h6 class="add-job-label">Add Note</h6>
-
-                    <form class="add-job-form" action="/submit-note" method="POST">
-                      <input type="text" id="add-note-field" class="add-job-field" name="Add-note" required>
-                      <br>
-                      <div class="row add-job-btn-row">
-                        <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
-                        <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Note">
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-
-
-              </div>
-
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row add-note-group">
+  <div class="container">
+    <div class="row jobs-header-row padded-row">
+      <div class="col text-center">
+        <h2 class="jobs-group-header">Notes</h2>
+      </div>
+      <div class="col text-center">
+        <span class="add-button">
+          <span>+</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row padded-row justify-content-center text-center buttons-row">
+
+      <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+        <div class="container add-job-container">
+          <h6 class="add-job-label">Add Note</h6>
+
+          <form class="add-job-form" action="/submit-note" method="POST">
+            <input type="text" id="add-note-field" class="add-job-field" name="Add-note" required>
+            <br>
+            <div class="row add-job-btn-row">
+              <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
+              <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Note">
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+    </div>
 
   </div>
+</div>
 
-  <script src="/jquery/jquery.min.js"></script>
-  <script src="scripts/scripts.js"></script>
+</div>
+</div>
+</div>
 
-  <%- include("partials/footer.ejs") %>
+</div>
+
+<script src="/jquery/jquery.min.js"></script>
+<script src="scripts/scripts.js"></script>
+
+<%- include("partials/footer.ejs") %>

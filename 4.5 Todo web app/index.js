@@ -1,7 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import bodyParser from "body-parser";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import session from "express-session";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -9,21 +12,39 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 3000;
 
+var cheese = "cheddar";
+
 app.use(express.static("public"));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist/"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", {
+    currentList: "to-do-btn",
+  });
 });
 
 app.get("/missed", (req, res) => {
-  res.render("missed.ejs");
+  res.render("missed.ejs", { currentList: req.session.currentList });
 });
 
 app.get("/completed", (req, res) => {
   //Run 'update' function on completed grid
-  res.render("completed.ejs");
+  res.render("completed.ejs", {
+    currentList: req.session.currentList,
+  });
+});
+
+app.post("/setCurrentList", (req, res) => {
+  req.session.currentList = req.body.currentList;
+  res.send("Received");
 });
 
 app.post("/addToDo", (req, res) => {
