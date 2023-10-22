@@ -81,10 +81,6 @@ $(".list-button button").each(function () {
 
     currentList = $(this).attr("id");
 
-    if (currentList === "missed-btn") {
-      $.get("/missed");
-    } else if (currentList === "completed-btn") {
-      $.get("/completed");
-    }
+    console.log(currentList);
   });
 });
