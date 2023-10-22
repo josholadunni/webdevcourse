@@ -32,7 +32,9 @@ const monthNames = [
 
 const month = monthNames[date.getMonth()];
 
-const day = dayNames[date.getDay()];
+const dayNumber = date.getDate();
+
+const dayName = dayNames[date.getDay()];
 
 let daySuffix = function () {
   if (date.getDate().toString().slice(-1) == 1) {
@@ -46,11 +48,17 @@ let daySuffix = function () {
   }
 };
 
-const dayNumber = date.getDate() + daySuffix();
+const dayNumberAndSuffix = dayNumber + daySuffix();
 
-$("#date-tagline").text(day + " " + dayNumber + " " + month);
+$("#date-tagline").text(dayName + " " + dayNumberAndSuffix + " " + month);
 
 //
+
+//Display the correct numbers in each of the 7 date circles
+
+for (let i = 0; i < 7; i++) {
+  $(`#day${i + 1}`).text(dayNumber + i);
+}
 
 //Click on each day to select the new day
 
