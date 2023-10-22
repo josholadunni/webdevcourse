@@ -68,3 +68,23 @@ $(".days-of-week li span").each(function () {
     $(this).addClass("current-day");
   });
 });
+
+//Click on each list button to display each list
+
+let currentList = "";
+
+$(".list-button button").each(function () {
+  $(this).on("click", function () {
+    $(".list-button button").removeClass("btn-filter-active");
+
+    $(this).addClass("btn-filter-active");
+
+    currentList = $(this).attr("id");
+
+    if (currentList === "missed-btn") {
+      $.get("/missed");
+    } else if (currentList === "completed-btn") {
+      $.get("/completed");
+    }
+  });
+});
