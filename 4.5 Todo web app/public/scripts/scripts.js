@@ -32,7 +32,9 @@ const monthNames = [
 
 const month = monthNames[date.getMonth()];
 
-const dayNumber = date.getDate();
+// const dayNumber = date.getDate();
+
+const dayNumber = 1;
 
 let dayNumberDecrement = dayNumber;
 
@@ -62,17 +64,64 @@ $("#date-tagline").text(dayName + " " + dayNumberAndSuffix + " " + month);
 
 //Display the correct numbers in each of the 7 date circles
 
+let maxDays;
+const minDays = 1;
+
+switch (month) {
+  case "January":
+    maxDays = 31;
+    break;
+  case "February":
+    maxDays = 28;
+    break;
+  case "March":
+    maxDays = 31;
+    break;
+  case "April":
+    maxDays = 30;
+    break;
+  case "May":
+    maxDays = 31;
+    break;
+  case "June":
+    maxDays = 30;
+    break;
+  case "July":
+    maxDays = 31;
+    break;
+  case "August":
+    maxDays = 31;
+    break;
+  case "September":
+    maxDays = 30;
+    break;
+  case "October":
+    maxDays = 31;
+    break;
+  case "Nobember":
+    maxDays = 30;
+    break;
+  case "December":
+    maxDays = 31;
+}
+
 switch (dayOfWeekNumber) {
   case 0:
     //Sunday
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
@@ -83,11 +132,17 @@ switch (dayOfWeekNumber) {
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
@@ -98,11 +153,17 @@ switch (dayOfWeekNumber) {
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
@@ -113,11 +174,17 @@ switch (dayOfWeekNumber) {
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
@@ -128,11 +195,17 @@ switch (dayOfWeekNumber) {
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
@@ -143,11 +216,17 @@ switch (dayOfWeekNumber) {
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
@@ -159,11 +238,17 @@ switch (dayOfWeekNumber) {
     for (i = dayOfWeekNumber; i >= 1; i--) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
+      if (dayNumberDecrement < 1) {
+        dayNumberDecrement = maxDays;
+      }
     }
 
     for (i = dayOfWeekNumber; i <= 7; i++) {
       $(`#day${i}`).text(dayNumberIncrement);
       dayNumberIncrement++;
+      if (dayNumberIncrement > maxDays) {
+        dayNumberIncrement = 1;
+      }
     }
 
     $(".days-of-week li span").removeClass("current-day");
