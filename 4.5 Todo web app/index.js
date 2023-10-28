@@ -12,8 +12,6 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 3000;
 
-var cheese = "cheddar";
-
 app.use(express.static("public"));
 app.use(
   session({

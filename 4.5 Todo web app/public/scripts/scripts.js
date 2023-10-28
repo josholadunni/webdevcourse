@@ -60,6 +60,10 @@ for (let i = 0; i < 7; i++) {
   $(`#day${i + 1}`).text(dayNumber + i);
 }
 
+$("#day1");
+
+console.log(date.getDay());
+
 //Click on each day to select the new day
 
 $(".days-of-week li span").each(function () {
@@ -70,9 +74,6 @@ $(".days-of-week li span").each(function () {
 });
 
 //Click on each list button to display each list
-
-// let currentList = ""
-// ;
 
 $(".list-button button").each(function () {
   $(this).on("click", function () {
@@ -97,5 +98,3 @@ $(".list-button button").each(function () {
     });
   });
 });
-
-console.log(cheese);
