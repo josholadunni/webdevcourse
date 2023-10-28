@@ -34,7 +34,13 @@ const month = monthNames[date.getMonth()];
 
 const dayNumber = date.getDate();
 
-const dayName = dayNames[date.getDay()];
+let dayNumberDecrement = dayNumber;
+
+let dayNumberIncrement = dayNumber;
+
+const dayOfWeekNumber = date.getDay();
+
+const dayName = dayNames[dayOfWeekNumber];
 
 let daySuffix = function () {
   if (date.getDate().toString().slice(-1) == 1) {
@@ -56,13 +62,113 @@ $("#date-tagline").text(dayName + " " + dayNumberAndSuffix + " " + month);
 
 //Display the correct numbers in each of the 7 date circles
 
-for (let i = 0; i < 7; i++) {
-  $(`#day${i + 1}`).text(dayNumber + i);
+switch (dayOfWeekNumber) {
+  case 0:
+    //Sunday
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day7").addClass("current-day");
+    break;
+  case 1:
+    //Monday
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day1").addClass("current-day");
+    break;
+  case 2:
+    //Tuesday
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day2").addClass("current-day");
+    break;
+  case 3:
+    //Wednesday
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day3").addClass("current-day");
+    break;
+  case 4:
+    //Thursday
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day4").addClass("current-day");
+    break;
+  case 5:
+    //Friday
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day5").addClass("current-day");
+    break;
+  case 6:
+    //Saturday
+
+    for (i = dayOfWeekNumber; i >= 1; i--) {
+      $(`#day${i}`).text(dayNumberDecrement);
+      dayNumberDecrement--;
+    }
+
+    for (i = dayOfWeekNumber; i <= 7; i++) {
+      $(`#day${i}`).text(dayNumberIncrement);
+      dayNumberIncrement++;
+    }
+
+    $(".days-of-week li span").removeClass("current-day");
+    $("#day6").addClass("current-day");
 }
-
-$("#day1");
-
-console.log(date.getDay());
 
 //Click on each day to select the new day
 
