@@ -34,7 +34,7 @@ const month = monthNames[date.getMonth()];
 
 // const dayNumber = date.getDate();
 
-const dayNumber = 1;
+const dayNumber = date.getDate();
 
 let dayNumberDecrement = dayNumber;
 
@@ -64,45 +64,60 @@ $("#date-tagline").text(dayName + " " + dayNumberAndSuffix + " " + month);
 
 //Display the correct numbers in each of the 7 date circles
 
+// TODO - A leap year occurs every 4 years which adds an extra day to February.
+
 let maxDays;
 const minDays = 1;
+let previousMaxDays;
 
 switch (month) {
   case "January":
     maxDays = 31;
+    previousMaxDays = 31;
     break;
   case "February":
     maxDays = 28;
+    previousMaxDays = 31;
     break;
   case "March":
     maxDays = 31;
+    previousMaxDays = 28;
     break;
   case "April":
     maxDays = 30;
+    previousMaxDays = 31;
     break;
   case "May":
     maxDays = 31;
+    previousMaxDays = 30;
     break;
   case "June":
     maxDays = 30;
+    previousMaxDays = 31;
     break;
   case "July":
     maxDays = 31;
+    previousMaxDays = 30;
     break;
   case "August":
     maxDays = 31;
+    previousMaxDays = 31;
     break;
   case "September":
     maxDays = 30;
+    previousMaxDays = 31;
     break;
   case "October":
     maxDays = 31;
+    previousMaxDays = 30;
     break;
-  case "Nobember":
+  case "November":
     maxDays = 30;
+    previousMaxDays = 31;
     break;
   case "December":
     maxDays = 31;
+    previousMaxDays = 30;
 }
 
 switch (dayOfWeekNumber) {
@@ -196,7 +211,7 @@ switch (dayOfWeekNumber) {
       $(`#day${i}`).text(dayNumberDecrement);
       dayNumberDecrement--;
       if (dayNumberDecrement < 1) {
-        dayNumberDecrement = maxDays;
+        dayNumberDecrement = previousMaxDays;
       }
     }
 
