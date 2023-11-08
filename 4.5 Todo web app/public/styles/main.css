@@ -215,7 +215,8 @@ body {
 }
 
 .btn-filter {
-  text-decoration: none;
+  text-decoration: none !important;
+  color:black;
   background-color: #a8bba1;
   border: none;
   width: 100px;

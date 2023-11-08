@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.use(express.static("public"));
 app.use(
@@ -62,7 +62,7 @@ app.post("addNote", (req, res) => {
 //3. Add button press styling
 //4. Wait a second
 //5. Remove from todo array
-//6. Run 'update' function on todo grid
+//6. Run 'update' function on todo grid 
 //7. Add ID to completed array
 
 app.listen(port, () => {
