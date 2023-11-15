@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 app.get("/missed", (req, res) => {
   res.render("missed.ejs", { currentList: req.session.currentList });
 });
-
+r
 app.get("/completed", (req, res) => {
   //Run 'update' function on completed grid
   res.render("completed.ejs", {
