@@ -304,3 +304,15 @@ $(".list-button button").each(function () {
     });
   });
 });
+
+//Bring up new job entry field on button click
+
+$('#add-button').on('click', function() {
+  $('#jobs-group').hide();
+  $('.add-job-group').css("cssText", "display: block !important");
+});
+
+$('#close-add-job-button').on('click', function() {
+  $('#add-job-group').hide();
+  $('#jobs-group').css("cssText", "display: block !important");
+})
