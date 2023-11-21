@@ -1,3 +1,11 @@
+// Update jobs on page load
+
+// $(function() {
+//   alert("Working");
+// })
+
+
+
 let numberOfJobs = $("#number-of-jobs").text();
 let jobField = $("add-job-field");
 
