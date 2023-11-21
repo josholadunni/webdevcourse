@@ -40,5 +40,9 @@
             </span>
           </li>
         </ul>
-        <p><span id="number-of-jobs">6</span> tasks due</p>
+        <% if (jobList.length > 1) { %>
+        <p><span id="number-of-jobs"><%= jobList.length %></span> tasks due</p>
+        <% } else { %>
+          <br>
+          <% } %>
       </div>

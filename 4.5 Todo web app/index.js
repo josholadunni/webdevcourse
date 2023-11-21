@@ -12,6 +12,8 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 4000;
 
+const jobArray = [];
+
 app.use(express.static("public"));
 app.use(
   session({
@@ -26,17 +28,18 @@ app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist/"));
 app.get("/", (req, res) => {
   res.render("index.ejs", {
     currentList: "to-do-btn",
+    jobList: jobArray,
   });
 });
 
 app.get("/missed", (req, res) => {
-  res.render("missed.ejs", { currentList: req.session.currentList });
+  res.render("missed.ejs", { currentList: req.session.currentList || 'missed-btn' });
 });
 
 app.get("/completed", (req, res) => {
   //Run 'update' function on completed grid
   res.render("completed.ejs", {
-    currentList: req.session.currentList,
+    currentList: req.session.currentList || 'completed-btn',
   });
 });
 
@@ -45,13 +48,18 @@ app.post("/setCurrentList", (req, res) => {
   res.send("Received");
 });
 
-app.post("/addToDo", (req, res) => {
+app.post("/submit-job", (req, res) => {
+ 
+ jobArray.push(req.body.jobtext);
+
+  res.redirect('/');
+
   //Get req.body text content
   //Push to todo array
   //Run function that adds last array item to grid system
 });
 
-app.post("addNote", (req, res) => {
+app.post("/addNote", (req, res) => {
   //Push to notes array
 });
 
