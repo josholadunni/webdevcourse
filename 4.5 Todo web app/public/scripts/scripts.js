@@ -70,6 +70,8 @@ let maxDays;
 const minDays = 1;
 let previousMaxDays;
 
+//Refactor using 30 days of code article
+
 switch (month) {
   case "January":
     maxDays = 31;
