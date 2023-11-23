@@ -46,35 +46,36 @@
         <div class="row padded-row justify-content-center text-center buttons-row">
 
           <% if (jobList.length != 0) { %>
-            <% jobList.forEach((job) => { %>
-              <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
-              <div class="container">
-                <div class="row button-text-row">
-                  <p>
-                    <%= job %>
-                  </p>
-                </div>
-                <div class="main-ui-button-radio">
-                  <div class="circle"></div>
-                </div>
+          <% jobList.forEach((job) => { %>
+          <div class="job col-sm-12 col-md-12 col-lg-5  main-ui-button">
+            <div class="container">
+              <div class="row button-text-row">
+                <p>
+                  <%= job %>
+                </p>
+              </div>
+              <div class="main-ui-button-radio">
+                <div id=<%= `completeButton${jobList.indexOf(job) + 1}` %> class="circle"></div>
               </div>
             </div>
-              
-           <% }); %>
-            
-            <% } else { %>
+
+          </div>
+
+          <% }); %>
+
+          <% } else { %>
 
           <div id="up-to-date" class="col-12 main-ui-button">
-                    <div class="container up-to-date">
-                      <p>
-                        Up to date
-                      </p>
-                    </div>
-                  </div>
+            <div class="container up-to-date">
+              <p>
+                Up to date
+              </p>
+            </div>
+          </div>
 
-                  <% } %>
+          <% } %>
 
-          
+
 
           <!-- <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
                     <div class="container">

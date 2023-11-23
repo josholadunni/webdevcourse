@@ -4,8 +4,6 @@
 //   alert("Working");
 // })
 
-
-
 let numberOfJobs = $("#number-of-jobs").text();
 let jobField = $("add-job-field");
 
@@ -317,12 +315,38 @@ $(".list-button button").each(function () {
 
 //Bring up new job entry field on button click
 
-$('#add-button').on('click', function() {
-  $('#jobs-group').hide();
-  $('.add-job-group').css("cssText", "display: block !important");
+$("#add-button").on("click", function () {
+  $("#jobs-group").hide();
+  $(".add-job-group").css("cssText", "display: block !important");
 });
 
-$('#close-add-job-button').on('click', function() {
-  $('#add-job-group').hide();
-  $('#jobs-group').css("cssText", "display: block !important");
-})
+$("#close-add-job-button").on("click", function () {
+  $("#add-job-group").hide();
+  $("#jobs-group").css("cssText", "display: block !important");
+});
+
+//Animate radial button on completed button click and make post request
+
+$(".circle").on("click", function () {
+  let jobId = this.id;
+
+  console.log("Job ID:", jobId);
+
+  $.ajax({
+    type: "POST",
+    url: "/complete-job",
+    data: { jobId: jobId },
+    success: function (responseData) {
+      console.log("POST request succeeded");
+      console.log(responseData);
+    },
+    error: function (responseData) {
+      console.log("POST request failed");
+      console.log(responseData);
+    },
+  });
+
+  // if (jobParent) {
+  //   $(jobParent).hide();
+  // }
+});

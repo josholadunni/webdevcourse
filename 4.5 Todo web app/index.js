@@ -14,6 +14,8 @@ const port = 4000;
 
 const jobArray = [];
 
+const completedArray = [];
+
 app.use(express.static("public"));
 app.use(
   session({
@@ -33,13 +35,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/missed", (req, res) => {
-  res.render("missed.ejs", { currentList: req.session.currentList || 'missed-btn' });
+  res.render("missed.ejs", {
+    currentList: req.session.currentList || "missed-btn",
+    jobList: jobArray,
+  });
 });
 
 app.get("/completed", (req, res) => {
   //Run 'update' function on completed grid
   res.render("completed.ejs", {
-    currentList: req.session.currentList || 'completed-btn',
+    currentList: req.session.currentList || "completed-btn",
+    jobList: jobArray,
+    completedList: completedArray,
   });
 });
 
@@ -49,14 +56,24 @@ app.post("/setCurrentList", (req, res) => {
 });
 
 app.post("/submit-job", (req, res) => {
- 
- jobArray.push(req.body.jobtext);
+  if (jobArray.indexOf(req.body.jobtext) == -1) {
+    jobArray.push(req.body.jobtext);
+  } else {
+    res.redirect("/");
+  }
 
-  res.redirect('/');
+  res.redirect("/");
 
   //Get req.body text content
   //Push to todo array
   //Run function that adds last array item to grid system
+});
+
+app.post("/complete-job", (req, res) => {
+  const jobId = req.body.jobId;
+  res.send(`Received jobId:, ${jobId}`);
+
+  const jobindex = jobArray.indexOf(jobId);
 });
 
 app.post("/addNote", (req, res) => {
@@ -70,7 +87,7 @@ app.post("/addNote", (req, res) => {
 //3. Add button press styling
 //4. Wait a second
 //5. Remove from todo array
-//6. Run 'update' function on todo grid 
+//6. Run 'update' function on todo grid
 //7. Add ID to completed array
 
 app.listen(port, () => {
