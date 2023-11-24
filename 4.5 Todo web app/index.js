@@ -31,6 +31,7 @@ app.get("/", (req, res) => {
   res.render("index.ejs", {
     currentList: "to-do-btn",
     jobList: jobArray,
+    completedList: completedArray,
   });
 });
 
@@ -71,9 +72,27 @@ app.post("/submit-job", (req, res) => {
 
 app.post("/complete-job", (req, res) => {
   const jobId = req.body.jobId;
-  res.send(`Received jobId:, ${jobId}`);
 
-  const jobindex = jobArray.indexOf(jobId);
+  const regex = /(\d+)(?!.*\d)/;
+  const match = jobId.match(regex);
+
+  if (match) {
+    const jobIndex = parseInt(match[0], 10);
+
+    if (jobIndex >= 0) {
+      const completedJob = jobArray.splice(jobIndex, 1);
+      completedArray.push(completedJob);
+      console.log("Redirecting");
+      res.status(200).send("Job completed");
+    } else {
+      console.log(`Job ID out of bounds`);
+      res.status(400).send("Job ID out of bounds");
+    }
+    // console.log(jobIndex);
+  } else {
+    console.log("No matchng number found in jobId");
+    res.status(400).send("Invalid job ID");
+  }
 });
 
 app.post("/addNote", (req, res) => {

@@ -328,7 +328,7 @@ $("#close-add-job-button").on("click", function () {
 //Animate radial button on completed button click and make post request
 
 $(".circle").on("click", function () {
-  let jobId = this.id;
+  let jobId = $(this).closest(".job").attr("id");
 
   console.log("Job ID:", jobId);
 
@@ -339,6 +339,7 @@ $(".circle").on("click", function () {
     success: function (responseData) {
       console.log("POST request succeeded");
       console.log(responseData);
+      window.location.href = "/";
     },
     error: function (responseData) {
       console.log("POST request failed");

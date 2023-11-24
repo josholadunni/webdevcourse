@@ -47,7 +47,7 @@
 
           <% if (jobList.length != 0) { %>
           <% jobList.forEach((job) => { %>
-          <div class="job col-sm-12 col-md-12 col-lg-5  main-ui-button">
+          <div id=<%=` #job${jobList.indexOf(job)}` %> class="job col-sm-12 col-md-12 col-lg-5  main-ui-button">
             <div class="container">
               <div class="row button-text-row">
                 <p>
@@ -55,7 +55,7 @@
                 </p>
               </div>
               <div class="main-ui-button-radio">
-                <div id=<%= `completeButton${jobList.indexOf(job) + 1}` %> class="circle"></div>
+                <div id=<%= `completeButton${jobList.indexOf(job)}` %> class="circle"></div>
               </div>
             </div>
 
