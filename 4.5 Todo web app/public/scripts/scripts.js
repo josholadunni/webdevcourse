@@ -325,6 +325,13 @@ $("#close-add-job-button").on("click", function () {
   $("#jobs-group").css("cssText", "display: block !important");
 });
 
+//Close new job entry field on cancel button click
+
+const closeAddForm = () => {
+  $("#add-job-group").hide();
+  $("#jobs-group").css("cssText", "display: block !important");
+}
+
 //Animate radial button on completed button click and make post request
 
 $(".circle").on("click", function () {
