@@ -313,6 +313,16 @@ $(".list-button button").each(function () {
   });
 });
 
+//Toggle add button styling on hover
+
+$('.add-button').on('mouseover', function() {
+  $(this).css('background-color', '#364036');
+});
+
+$(".add-button").on('mouseout', function() {
+  $(this).css('background-color', '#556354');
+})
+
 //Bring up new job entry field on button click
 
 $("#add-button").on("click", function () {
