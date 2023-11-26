@@ -93,8 +93,8 @@ body {
 }
 
 .delete-button {
-    width: 19px !important;
-    height: 19px !important;
+    width: 25px !important;
+    height: 25px !important;
     border-style: solid;
     border-color: #586454;
     color: #ffffff;
@@ -105,7 +105,8 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 10px;
+    margin-top: 5px;
+    right: 20px;
 }
 
 .delete-button span {

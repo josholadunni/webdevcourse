@@ -359,6 +359,18 @@ $(".circle").on("click", function () {
   // }
 });
 
+//Toggle delete button styling on hover
+
+$('.delete-button').on("mouseover", function() {
+  $(this).css("background-color", "#586454");
+  $(this).children("span").css("color", "white");
+});
+
+$('.delete-button').on('mouseout', function() {
+  $(this).css("background-color", "transparent");
+  $(this).children("span").css("color", "#586454")
+})
+
 //Animate delete button on delete button click and make post request
 
 $('.delete-button').on("click", function () {
