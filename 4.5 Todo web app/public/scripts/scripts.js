@@ -332,7 +332,19 @@ const closeAddForm = () => {
   $("#jobs-group").css("cssText", "display: block !important");
 }
 
-//Animate radial button on completed button click and make post request
+//Toggle complete button styling on hover
+
+$('.circle').on("mouseover", function() {
+  $(this).css("background-color", "#586454");
+  $(this).children("span").css("color", "white");
+});
+
+$('.circle').on('mouseout', function() {
+  $(this).css("background-color", "transparent");
+  $(this).children("span").css("color", "#586454")
+})
+
+//Make post request on completed button click
 
 $(".circle").on("click", function () {
   let jobId = $(this).closest(".job").attr("id");
@@ -353,10 +365,6 @@ $(".circle").on("click", function () {
       console.log(responseData);
     },
   });
-
-  // if (jobParent) {
-  //   $(jobParent).hide();
-  // }
 });
 
 //Toggle delete button styling on hover
