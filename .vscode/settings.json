@@ -2,5 +2,6 @@
   "liveServer.settings.port": 5506,
   "sync.autoDownload": true,
   "sync.autoUpload": true,
-  "sync.forceDownload": false
+  "sync.forceDownload": false,
+  "sync.gist": "1ddd239b5c3db4c4acb523424fd4c7b3"
 }

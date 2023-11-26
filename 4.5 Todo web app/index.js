@@ -95,6 +95,35 @@ app.post("/complete-job", (req, res) => {
   }
 });
 
+app.delete("/delete-job/:jobId", (req, res) => {
+  const jobId = req.params.jobId;
+
+  console.log(jobId);
+
+  const regex = /(\d+)(?!.*\d)/;
+  const match = jobId.match(regex);
+
+  if (match) {
+    const jobIndex = parseInt(match[0], 10);
+
+    if (jobIndex >= 0) {
+      const deleteJob = () => { jobArray.splice(jobIndex, 1); }
+
+      deleteJob();
+    
+      res.status(200).send("Job deleted");
+    } else {
+      console.log(`Job ID out of bounds`);
+      res.status(400).send("Job ID out of bounds - not deleted");
+    }
+    // console.log(jobIndex);
+  } else {
+    console.log("No matchng number found in jobId");
+    res.status(400).send("Invalid job ID");
+  }
+  
+});
+
 app.post("/addNote", (req, res) => {
   //Push to notes array
 });

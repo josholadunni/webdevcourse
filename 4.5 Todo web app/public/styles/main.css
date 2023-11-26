@@ -87,6 +87,33 @@ body {
   margin-left: 10rem;
 }
 
+.delete-button-row {
+  display: flex;
+  justify-content: end;
+}
+
+.delete-button {
+    width: 19px !important;
+    height: 19px !important;
+    border-style: solid;
+    border-color: #586454;
+    color: #ffffff;
+    border-width: 1px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+}
+
+.delete-button span {
+  font-size: 12px;
+  color: #586454;
+  font-weight: bold;
+}
+
 .add-button :first-child {
   margin-bottom: 2px;
 }
@@ -107,6 +134,7 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
+  padding-top: 0.5rem;
 }
 
 .main-ui-button p {

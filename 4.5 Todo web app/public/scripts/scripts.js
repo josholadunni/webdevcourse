@@ -358,3 +358,26 @@ $(".circle").on("click", function () {
   //   $(jobParent).hide();
   // }
 });
+
+//Animate delete button on delete button click and make post request
+
+$('.delete-button').on("click", function () {
+  let jobId = $(this).attr("id");
+
+  console.log("Job ID:", jobId);
+
+  $.ajax({
+    type: "DELETE",
+    url: `/delete-job/${jobId}`,
+    success: function (responseData) {
+      console.log("DELETE request succeeded");
+      console.log(responseData);
+      window.location.href = "/";
+    },
+    error: function (responseData) {
+      console.log("DELETE request failed");
+      console.log(responseData);
+    }
+  })
+
+});

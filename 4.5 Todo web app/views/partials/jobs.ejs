@@ -49,6 +49,9 @@
           <% jobList.forEach((job) => { %>
           <div id=<%=` #job${jobList.indexOf(job)}` %> class="job col-sm-12 col-md-12 col-lg-5  main-ui-button">
             <div class="container">
+              <span id=<%=`delete-button${jobList.indexOf(job)}`%> class="delete-button">
+                <span>x</span>
+              </span>
               <div class="row button-text-row">
                 <p>
                   <%= job %>
