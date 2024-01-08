@@ -19,10 +19,17 @@
     <input type="text" id="user-input" name="message" placeholder="Type here..." />
     <br>
     <br>
-    <label for="cars">Choose a model:</label>
-    <select id="models" name="models">
+    <label for="model">Choose a model:</label>
+    <select id="models" name="model">
+      <% if (selectedModel !== undefined) { %>
+      <option selected value="<%=selectedModel%>"><%=selectedModel%></option>
+      <% } %>
+      <% if (Array.isArray(models.data)) { %>
       <% for (model of models.data) {  %>
       <option value="<%=model.id%>"><%=model.id%></option>
+      <% } %>
+      <% } else { %>
+      <option value="Could not load models list">Could not load models list</option>
       <% } %>
     </select>
     <br>
@@ -33,7 +40,11 @@
 
   <h3>Output</h3>
   <div id="outputArea" name="outputArea">
-    <p><%= chatMessages.choices[0].message.content %></p>
+    <p> <% if (Array.isArray(chatMessages)) { %>
+      <%= chatMessages[0].message.content %></p>
+    <% } else { %>
+    <p><%= chatMessages %></p>
+    <% } %>
   </div>
 
   <!-- Upload files -->

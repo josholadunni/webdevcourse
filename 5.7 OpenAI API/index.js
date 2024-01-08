@@ -26,28 +26,47 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
+const modelList = await axios.get(API_URL + "/models", config);
+
 app.get("/", async (req, res) => {
   try {
-    const completionResult = await axios.post(
-      API_URL + "/chat/completions",
-      data,
-      config
-    );
-    const modelList = await axios.get(API_URL + "/models", config);
     res.render("index.ejs", {
-      chatMessages: completionResult.data,
+      chatMessages: "Waiting for input",
       models: modelList.data,
+      selectedModel: undefined,
     });
   } catch (error) {
-    res.render("index.ejs", {
-      chatMessages: error.response.data,
-      models: error.response.data,
-    });
+    console.log(error);
   }
 });
 
 app.post("/chat-request", async (req, res) => {
-  res.send("Working");
+  const messageData = {
+    model: req.body.model,
+    messages: [
+      { role: "system", content: "You are a helpful assistant." },
+      { role: "user", content: req.body.message },
+    ],
+  };
+
+  try {
+    const completionResult = await axios.post(
+      API_URL + "/chat/completions",
+      messageData,
+      config
+    );
+    res.render("index.ejs", {
+      chatMessages: completionResult.data.choices,
+      models: modelList.data,
+      selectedModel: req.body.model,
+    });
+  } catch (error) {
+    res.render("index.ejs", {
+      chatMessages: error.response.data.error.message,
+      models: modelList.data,
+      selectedModel: req.body.model,
+    });
+  }
 });
 
 app.listen(port, () => {
