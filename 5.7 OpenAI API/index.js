@@ -18,7 +18,7 @@ const data = {
   temperature: 0.7,
 };
 
-const API_URL = "https://api.openai.com/v1/chat/completions";
+const API_URL = "https://api.openai.com/v1";
 
 app.set("view engine", "ejs");
 
@@ -28,11 +28,26 @@ app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   try {
-    const result = await axios.post(API_URL, data, config);
-    res.render("index.ejs", { content: result.data });
+    const completionResult = await axios.post(
+      API_URL + "/chat/completions",
+      data,
+      config
+    );
+    const modelList = await axios.get(API_URL + "/models", config);
+    res.render("index.ejs", {
+      chatMessages: completionResult.data,
+      models: modelList.data,
+    });
   } catch (error) {
-    res.render("index.ejs", { content: error.response.data });
+    res.render("index.ejs", {
+      chatMessages: error.response.data,
+      models: error.response.data,
+    });
   }
+});
+
+app.post("/chat-request", async (req, res) => {
+  res.send("Working");
 });
 
 app.listen(port, () => {

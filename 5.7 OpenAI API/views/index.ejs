@@ -4,11 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="/styles.css">
+  <title>ChatGPT Interface</title>
 </head>
 
 <body>
-  <p> <%= content.choices[0].message.content %> </p>
+
+  <h1>ChatGPT Interface</h1>
+
+  <h3>Input</h3>
+  <form action="/chat-request" method="post">
+    <label for="message">Enter your message</label>
+    <br>
+    <input type="text" id="user-input" name="message" placeholder="Type here..." />
+    <br>
+    <br>
+    <label for="cars">Choose a model:</label>
+    <select id="models" name="models">
+      <% for (model of models.data) {  %>
+      <option value="<%=model.id%>"><%=model.id%></option>
+      <% } %>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+
+  </form>
+
+  <h3>Output</h3>
+  <div id="outputArea" name="outputArea">
+    <p><%= chatMessages.choices[0].message.content %></p>
+  </div>
+
+  <!-- Upload files -->
+  <!-- List of uploaded files -->
+  <!-- Delete a file -->
+
+  <!-- Images -->
 </body>
 
 </html>
