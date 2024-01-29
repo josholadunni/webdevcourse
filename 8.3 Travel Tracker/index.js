@@ -22,7 +22,7 @@ app.get("/", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM public.visited_countries");
 
-    console.log(result);
+    // console.log(result);
 
     const data = {
       total: result.rows.length,
@@ -38,6 +38,24 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.post("/add", async (req, res) => {
+  const countryName = req.body.country;
+  const result = await db.query("SELECT * FROM public.countries");
+
+  // console.log(result);
+
+  cresult.rows.map(async (row) => {
+    if (row.country_name == countryName) {
+      await db.query(
+        "INSERT INTO public.visited_countries (country_code) VALUES ($1)",
+        [row.country_code]
+      );
+    }
+  });
+
+  res.redirect("/");
+});
+
 app.listen(port, () => {
-  console.log(`Server running on htxtp://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
