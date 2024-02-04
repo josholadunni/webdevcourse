@@ -199,13 +199,15 @@
   <script>
     const country_codes = "<%= countries %>".split(",") // convert string to array
 
+    console.log(typeof(country_codes));
+
     console.log("Countries type: " + typeof("<%= countries %>"))
     console.log("Countries: " + "<%= countries %>")
     console.log("country_codes: " + country_codes);
 
     country_codes.map(code => {
       console.log(code);
-      document.getElementById(code).style.fill = 'teal'
+      document.getElementById(code).style.fill = 'teal';
     });
   </script>
 </body>
