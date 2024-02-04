@@ -45,23 +45,19 @@ app.post("/add", async (req, res) => {
     .toLowerCase()
     .replace(/\b(\w)/g, (s) => s.toUpperCase());
 
-  const result = await db.query("SELECT * FROM public.countries");
+  const result = await db.query(
+    "SELECT country_code FROM public.countries WHERE country_name = $1",
+    [capitalisedCountryName]
+  );
 
-  // console.log(result);
+  if (result.rows.length !== 0) {
+    const countryCode = result.rows[0].country_code;
 
-  result.rows.map(async (row) => {
-    if (row.country_name == capitalisedCountryName) {
-      await db.query(
-        "INSERT INTO public.visited_countries (country_code) VALUES ($1)",
-        [row.country_code]
-      );
-      // console.log("Inserted country code");
-    } else {
-      // console.log(`Didnt insert country code ${row.country_code}`);
-    }
-  });
-
-  res.redirect("/");
+    await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [
+      countryCode,
+    ]);
+    res.redirect("/");
+  }
 });
 
 app.listen(port, () => {
