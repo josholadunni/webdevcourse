@@ -9,12 +9,14 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "world",
-  password: "123456",
+  password: "hpharrypot",
   port: 5432,
 });
+
 db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static("public"));
 
 let currentUserId = 1;
@@ -24,7 +26,7 @@ let users = [
   { id: 2, name: "Jack", color: "powderblue" },
 ];
 
-async function checkVisisted() {
+async function checkVisited() {
   const result = await db.query("SELECT country_code FROM visited_countries");
   let countries = [];
   result.rows.forEach((country) => {
@@ -32,8 +34,9 @@ async function checkVisisted() {
   });
   return countries;
 }
+
 app.get("/", async (req, res) => {
-  const countries = await checkVisisted();
+  const countries = await checkVisited();
   res.render("index.ejs", {
     countries: countries,
     total: countries.length,
@@ -41,9 +44,9 @@ app.get("/", async (req, res) => {
     color: "teal",
   });
 });
+
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
-
   try {
     const result = await db.query(
       "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
@@ -65,6 +68,7 @@ app.post("/add", async (req, res) => {
     console.log(err);
   }
 });
+
 app.post("/user", async (req, res) => {});
 
 app.post("/new", async (req, res) => {
