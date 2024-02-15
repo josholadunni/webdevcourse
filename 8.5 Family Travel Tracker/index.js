@@ -26,17 +26,23 @@ let users = [
   { id: 2, name: "Jack", color: "powderblue" },
 ];
 
-async function checkVisited() {
-  const result = await db.query("SELECT country_code FROM visited_countries");
+async function checkVisited(userID) {
+  const result = await db.query(
+    "SELECT u.id, u.name, vc.country_code FROM users u JOIN visited_countries vc ON u.id = vc.user_id WHERE u.id = $1",
+    [userID]
+  );
   let countries = [];
-  result.rows.forEach((country) => {
-    countries.push(country.country_code);
-  });
+  console.log(result.rows[0].country_code);
+
+  for (let i = 0; i < result.rows.length; i++) {
+    countries.push(result.rows[i].country_code);
+  }
+
   return countries;
 }
 
 app.get("/", async (req, res) => {
-  const countries = await checkVisited();
+  const countries = await checkVisited(currentUserId);
   res.render("index.ejs", {
     countries: countries,
     total: countries.length,
@@ -69,27 +75,25 @@ app.post("/add", async (req, res) => {
   }
 });
 
-async function checkUserVisitedCountries(userID) {
-  currentUserId = userID;
-  try {
-    const searchUser = await db.query(
-      "SELECT u.id, u.name, vc.country_code FROM users u JOIN visited_countries vc ON u.id = vc.user_id WHERE u.id = $1",
-      [userID]
-    );
-    return searchUser.rows;
-  } catch (error) {
-    console.error("Error querying the database:", error);
-    return [];
-  }
-}
+// async function checkUserVisitedCountries(userID) {
+//   currentUserId = userID;
+//   try {
+//     const searchUser = await db.query(
+//       "SELECT u.id, u.name, vc.country_code FROM users u JOIN visited_countries vc ON u.id = vc.user_id WHERE u.id = $1",
+//       [userID]
+//     );
+//     return searchUser.rows;
+//   } catch (error) {
+//     console.error("Error querying the database:", error);
+//     return [];
+//   }
+// }
 
 app.post("/user", async (req, res) => {
-  const checkVisited = await checkUserVisitedCountries(Number(req.body.user));
-
-  console.log(checkVisited);
+  const countries = await checkVisited(Number(req.body.user));
 
   res.render("index.ejs", {
-    countries: checkVisited.countries,
+    countries: countries,
     total: countries.length,
     users: users,
     color: "teal",
