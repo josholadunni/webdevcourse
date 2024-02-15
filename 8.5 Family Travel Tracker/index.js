@@ -69,7 +69,40 @@ app.post("/add", async (req, res) => {
   }
 });
 
-app.post("/user", async (req, res) => {});
+async function checkUserVisitedCountries(userID) {
+  // console.log("Checking for userID:", userID);
+  try {
+    const searchUser = await db.query(
+      "SELECT id, name FROM users WHERE id = $1",
+      [userID]
+    );
+    // console.log("Rows:", searchUser.rows);
+    return searchUser.rows;
+    // const userVisitedCountries = await db.query(
+    //   "SELECT u.id, u.name, vc.user_id, vc.country_code FROM users u JOIN visited_countries vc ON u.id = vc.user_id"
+  } catch (error) {
+    console.error("Error querying the database:", error);
+    return [];
+  }
+}
+
+app.post("/user", async (req, res) => {
+  //res.render index.ejs
+  //countries: joinedquery.countries
+
+  const checkVisited = await checkUserVisitedCountries(Number(req.body.user));
+
+  console.log(checkVisited);
+
+  // res.render("index.ejs", {
+  //   countries: checkVisited.countries,
+  //   total: countries.length,
+  //   users: users,
+  //   color: "teal",
+  // });
+
+  // console.log(req.body.user);
+});
 
 app.post("/new", async (req, res) => {
   //Hint: The RETURNING keyword can return the data that was inserted.
