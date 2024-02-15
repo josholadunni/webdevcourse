@@ -21,33 +21,62 @@ app.use(express.static("public"));
 
 let currentUserId = 1;
 
-let users = [
-  { id: 1, name: "Angela", color: "teal" },
-  { id: 2, name: "Jack", color: "powderblue" },
-];
+// let users = [
+//   { id: 1, name: "Angela", color: "teal" },
+//   { id: 2, name: "Jack", color: "powderblue" },
+// ];
 
 async function checkVisited(userID) {
+  currentUserId = userID;
+
   const result = await db.query(
     "SELECT u.id, u.name, vc.country_code FROM users u JOIN visited_countries vc ON u.id = vc.user_id WHERE u.id = $1",
     [userID]
   );
+
+  const userQuery = await db.query("SELECT id, name, color FROM users");
+
+  //Countries
   let countries = [];
-  console.log(result.rows[0].country_code);
+  // console.log(result.rows);
+  // console.log(result.rows[0].country_code);
 
   for (let i = 0; i < result.rows.length; i++) {
     countries.push(result.rows[i].country_code);
   }
 
-  return countries;
+  //Total
+  let total = result.rows.length;
+
+  //Users
+
+  const users = userQuery.rows;
+
+  //Color
+  const color = [];
+
+  userQuery.rows.forEach((colors) => {
+    color.push(colors.color);
+  });
+
+  const userData = {
+    countries: countries,
+    total: total,
+    users: users,
+    color: color,
+  };
+
+  return userData;
 }
 
 app.get("/", async (req, res) => {
   const countries = await checkVisited(currentUserId);
+  // console.log(countries);
   res.render("index.ejs", {
-    countries: countries,
+    countries: countries.countries,
     total: countries.length,
-    users: users,
-    color: "teal",
+    users: countries.users,
+    color: countries.color[currentUserId - 1],
   });
 });
 
@@ -93,10 +122,10 @@ app.post("/user", async (req, res) => {
   const countries = await checkVisited(Number(req.body.user));
 
   res.render("index.ejs", {
-    countries: countries,
+    countries: countries.countries,
     total: countries.length,
-    users: users,
-    color: "teal",
+    users: countries.users,
+    color: countries.color[currentUserId - 1],
   });
 });
 
