@@ -82,6 +82,7 @@ app.get("/", async (req, res) => {
 
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
+  console.log(input);
   try {
     const result = await db.query(
       "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
@@ -89,7 +90,9 @@ app.post("/add", async (req, res) => {
     );
 
     const data = result.rows[0];
+    console.log(data);
     const countryCode = data.country_code;
+    console.log(countryCode);
     try {
       await db.query(
         "INSERT INTO visited_countries (country_code, user_id) VALUES ($1, $2)",
@@ -104,34 +107,37 @@ app.post("/add", async (req, res) => {
   }
 });
 
-// async function checkUserVisitedCountries(userID) {
-//   currentUserId = userID;
-//   try {
-//     const searchUser = await db.query(
-//       "SELECT u.id, u.name, vc.country_code FROM users u JOIN visited_countries vc ON u.id = vc.user_id WHERE u.id = $1",
-//       [userID]
-//     );
-//     return searchUser.rows;
-//   } catch (error) {
-//     console.error("Error querying the database:", error);
-//     return [];
-//   }
-// }
-
 app.post("/user", async (req, res) => {
-  const countries = await checkVisited(Number(req.body.user));
+  if (req.body.add === "new") {
+    res.render("new.ejs", {});
+  } else {
+    console.log(currentUserId);
+    const countries = await checkVisited(Number(req.body.user));
 
-  res.render("index.ejs", {
-    countries: countries.countries,
-    total: countries.length,
-    users: countries.users,
-    color: countries.color[currentUserId - 1],
-  });
+    res.render("index.ejs", {
+      countries: countries.countries,
+      total: countries.length,
+      users: countries.users,
+      color: countries.color[currentUserId - 1],
+    });
+  }
 });
 
 app.post("/new", async (req, res) => {
   //Hint: The RETURNING keyword can return the data that was inserted.
   //https://www.postgresql.org/docs/current/dml-returning.html
+
+  const input = req.body;
+
+  try {
+    await db.query("INSERT INTO users (name, color) VALUES ($1, $2)", [
+      input.name,
+      input.color,
+    ]);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.listen(port, () => {
