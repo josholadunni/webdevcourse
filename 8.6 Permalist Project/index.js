@@ -34,20 +34,19 @@ async function checkItems() {
 
 app.get("/", async (req, res) => {
   const result = await checkItems();
-  const items = [];
+  const pageItems = [];
   result.rows.forEach((item) => {
-    items.push(item);
+    pageItems.push(item);
   });
-  console.log(items);
   res.render("index.ejs", {
     listTitle: "Today",
-    listItems: items,
+    listItems: pageItems,
   });
 });
 
-app.post("/add", (req, res) => {
+app.post("/add", async (req, res) => {
   const item = req.body.newItem;
-  items.push({ title: item });
+  await db.query("INSERT INTO items(title) VALUES($1)", [item]);
   res.redirect("/");
 });
 
