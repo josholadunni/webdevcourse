@@ -18,10 +18,10 @@ db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let items = [
-  { id: 1, title: "Buy milk" },
-  { id: 2, title: "Finish homework" },
-];
+// let items = [
+//   { id: 1, title: "Buy milk" },
+//   { id: 2, title: "Finish homework" },
+// ];
 
 async function checkItems() {
   try {
@@ -34,7 +34,11 @@ async function checkItems() {
 
 app.get("/", async (req, res) => {
   const result = await checkItems();
-  console.log(result.rows);
+  const items = [];
+  result.rows.forEach((item) => {
+    items.push(item);
+  });
+  console.log(items);
   res.render("index.ejs", {
     listTitle: "Today",
     listItems: items,
