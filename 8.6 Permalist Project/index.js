@@ -32,6 +32,17 @@ async function checkItems() {
   }
 }
 
+async function updateItem(id, title) {
+  try {
+    const result = await db.query("UPDATE items SET title = $2 WHERE id = $1", [
+      id,
+      title,
+    ]);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 app.get("/", async (req, res) => {
   const result = await checkItems();
   const pageItems = [];
@@ -50,9 +61,12 @@ app.post("/add", async (req, res) => {
   res.redirect("/");
 });
 
-app.post("/edit", (req, res) => {});
+app.post("/edit", (req, res) => {
+  updateItem(req.body.updatedItemId, req.body.updatedItemTitle);
+  res.redirect("/");
+});
 
-app.post("/delete", (req, res) => {});
+app.post("/delete", async (req, res) => {});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
