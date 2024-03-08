@@ -30,13 +30,17 @@ let getBooks = async () => {
   return result.rows;
 };
 
+let getBook = async (bookId) => {
+  const result = await db.query("SELECT * FROM books WHERE id = $1", [bookId]);
+  return result.rows;
+};
+
 // let bookCover = () => {
 //   return;
-// };r
+// };
 
 app.get("/", async (req, res) => {
   try {
-    let result = await getBooks();
     res.render("index.ejs", {
       books: await getBooks(),
       user: req.user,
@@ -44,6 +48,15 @@ app.get("/", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+});
+
+app.get("/view-notes", (req, res) => {
+  try {
+    console.log(req.body);
+    res.render("index.ejs", {
+      book: getBook(id),
+    });
+  } catch (error) {}
 });
 
 app.post("/add-book", (req, res) => {
