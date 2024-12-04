@@ -1,0 +1,48 @@
+<main role="main">
+  <div class="container-fluid">
+    <div class="row main-row">
+      <div class="col-12 date-section">
+        <p id="date-tagline">Monday 16th October</p>
+        <ul class="days-of-week">
+          <li>
+            <span id="day1" class="current-day">
+              9
+            </span>
+          </li>
+          <li>
+            <span id="day2">
+              10
+            </span>
+          </li>
+          <li>
+            <span id="day3">
+              11
+            </span>
+          </li>
+          <li>
+            <span id="day4">
+              12
+            </span>
+          </li>
+          <li>
+            <span id="day5">
+              13
+            </span>
+          </li>
+          <li>
+            <span id="day6">
+              14
+            </span>
+          </li>
+          <li>
+            <span id="day7">
+              15
+            </span>
+          </li>
+        </ul>
+        <% if (jobList.length > 1) { %>
+        <p><span id="number-of-jobs"><%= jobList.length %></span> tasks due</p>
+        <% } else { %>
+          <br>
+          <% } %>
+      </div>

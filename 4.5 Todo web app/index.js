@@ -5,9 +5,11 @@ import bodyParser from "body-parser";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import session from "express-session";
+import crypto from "crypto";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const secret = crypto.randomBytes(64).toString("hex");
 
 const app = express();
 const port = 4000;
@@ -16,7 +18,6 @@ const jobArray = [];
 
 const completedArray = [];
 
-app.use(express.static("public"));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -26,6 +27,19 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist/"));
+
+// Add these lines before your other app.use() statements
+app.use(
+  express.static("public", {
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith(".css")) {
+        res.set("Content-Type", "text/css");
+      } else if (path.endsWith(".js")) {
+        res.set("Content-Type", "application/javascript");
+      }
+    },
+  })
+);
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
@@ -107,10 +121,12 @@ app.delete("/delete-job/:jobId", (req, res) => {
     const jobIndex = parseInt(match[0], 10);
 
     if (jobIndex >= 0) {
-      const deleteJob = () => { jobArray.splice(jobIndex, 1); }
+      const deleteJob = () => {
+        jobArray.splice(jobIndex, 1);
+      };
 
       deleteJob();
-    
+
       res.status(200).send("Job deleted");
     } else {
       console.log(`Job ID out of bounds`);
@@ -121,7 +137,6 @@ app.delete("/delete-job/:jobId", (req, res) => {
     console.log("No matchng number found in jobId");
     res.status(400).send("Invalid job ID");
   }
-  
 });
 
 app.post("/addNote", (req, res) => {

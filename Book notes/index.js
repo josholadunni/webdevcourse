@@ -2,16 +2,17 @@ import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
 import axios from "axios";
+require("dotenv").config(); // Load environment variables from .env file
 
 const app = express();
 const port = 3000;
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "book-notes",
-  password: "hpharrypot",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 db.connect();
@@ -52,9 +53,10 @@ app.get("/", async (req, res) => {
 
 app.get("/view-notes", (req, res) => {
   try {
-    console.log(req.body);
-    res.render("index.ejs", {
-      book: getBook(id),
+    const bookName = req.query.bookName;
+    //result = Select notes from notes table where title = bookName
+    res.render("notes.ejs", {
+      //notes: result.notes
     });
   } catch (error) {}
 });

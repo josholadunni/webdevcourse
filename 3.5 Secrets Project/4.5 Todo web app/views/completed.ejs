@@ -1,0 +1,212 @@
+<%- include("partials/header.ejs") %>
+
+<%- include("partials/date.ejs") %>
+
+<div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 main-ui-group">
+  <div class="container main-ui">
+
+    <div id="jobs-group" class="row jobs-group">
+      <div class="container">
+        <div class="row jobs-header-row padded-row">
+          <div class="col text-center">
+            <h2 id="jobs-group-header" class="jobs-group-header">Jobs</h2>
+          </div>
+          <div class="col text-center">
+            <span id="add-button" class="add-button">
+              <span>+</span>
+            </span>
+          </div>
+        </div>
+        <div id="jobs-row" class="row justify-content-center btn-row text-center mx-auto">
+          <div class="col-4 text-center list-button">
+            <% if(currentList === 'to-do-btn') { %>
+            <button id="to-do-btn" class="btn-filter btn-filter-active">To-do</button>
+          </div>
+          <div class="col-4 text-center list-button">
+            <button id="missed-btn" class="btn-filter">Missed</button>
+          </div>
+          <div class="col-4 text-center list-button">
+            <button id="completed-btn" class="btn-filter">Completed</button>
+            <% } else if (currentList === 'missed-btn') { %>
+            <button id="to-do-btn" class="btn-filter">To-do</button>
+          </div>
+          <div class="col-4 text-center list-button">
+            <button id="missed-btn" class="btn-filter btn-filter-active">Missed</button>
+          </div>
+          <div class="col-4 text-center list-button">
+            <button id="completed-btn" class="btn-filter">Completed</button>
+            <% } else if (currentList === 'completed-btn') { %>
+            <button id="to-do-btn" class="btn-filter">To-do</button>
+          </div>
+          <div class="col-4 text-center list-button">
+            <button id="missed-btn" class="btn-filter">Missed</button>
+          </div>
+          <div class="col-4 text-center list-button">
+            <button id="completed-btn" class="btn-filter btn-filter-active">Completed</button>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="row padded-row justify-content-center text-center buttons-row">
+
+          <% if (completedList.length != 0) { %>
+          <% completedList.forEach((job) => { %>
+          <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+            <div class="container">
+              <div class="row button-text-row">
+                <p>
+                  <%= job %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <% }); %>
+
+          <% } else { %>
+
+
+
+          <% } %>
+
+
+
+          <!-- <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+                    <div class="container">
+                      <div class="row button-text-row">
+                        <p>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div class="main-ui-button-radio">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div> -->
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Add new job area-->
+
+    <div id="add-job-group" class="row add-job-group">
+      <div class="container">
+        <div class="row jobs-header-row padded-row">
+          <div class="col text-center">
+            <h2 class="jobs-group-header">Add Job</h2>
+          </div>
+          <div class="col text-center">
+            <span id='close-add-job-button' class="add-button">
+              <span>+</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row padded-row justify-content-center text-center buttons-row">
+
+          <div class="main-ui-button">
+            <div class="container add-job-container">
+              <h6 class="add-job-label">Add Job</h6>
+
+              <form class="add-job-form" action="/submit-job" method="POST">
+                <input type="text" id="add-job-field" class="add-job-field" name="jobtext" required>
+                <br>
+                <div class="row add-job-btn-row">
+                  <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
+                  <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Task">
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--End of add new job area -->
+
+    <div class="row notes-group text-center">
+      <div class="container">
+        <div class="row padded-row">
+          <div class="col">
+            <h2 class="notes-group-header">Notes</h2>
+          </div>
+          <div class="col">
+            <span class="add-button">
+              <span>
+                +
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="row padded-sides">
+          <div class="container notes-group-container">
+            <div class="row justify-content-center">
+              <div class="col-8">
+                Lorem
+                <hr>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-8">
+                Lorem
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row add-note-group">
+      <div class="container">
+        <div class="row jobs-header-row padded-row">
+          <div class="col text-center">
+            <h2 class="jobs-group-header">Notes</h2>
+          </div>
+          <div class="col text-center">
+            <span class="add-button">
+              <span>+</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row padded-row justify-content-center text-center buttons-row">
+
+          <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+            <div class="container add-job-container">
+              <h6 class="add-job-label">Add Note</h6>
+
+              <form class="add-job-form" action="/submit-note" method="POST">
+                <input type="text" id="add-note-field" class="add-job-field" name="Add-note" required>
+                <br>
+                <div class="row add-job-btn-row">
+                  <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
+                  <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Note">
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+<script src="/jquery/jquery.min.js"></script>
+<script src="scripts/scripts.js"></script>
+
+<%- include("partials/footer.ejs") %>

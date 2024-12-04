@@ -1,0 +1,331 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.main-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.date-section {
+  color: #586454;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-day {
+  background-color: #586454 !important;
+  color: white;
+}
+
+.days-of-week {
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  list-style: none;
+}
+
+.days-of-week li {
+  padding: 0 0.25rem;
+}
+
+.days-of-week li span {
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border-style: solid;
+  border-color: #586454;
+  border-width: 0.5px;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-ui-group {
+  padding: 0 1rem !important;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main-ui {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button {
+  width: 35px;
+  height: 35px;
+  background-color: #556454;
+  border-style: solid;
+  border-color: #586454;
+  color: #ffffff;
+  border-width: 0.5px;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10rem;
+}
+
+.delete-button-row {
+  display: flex;
+  justify-content: end;
+}
+
+.delete-button {
+    width: 25px !important;
+    height: 25px !important;
+    border-style: solid;
+    border-color: #586454;
+    color: #ffffff;
+    border-width: 1px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: 5px;
+    right: 20px;
+}
+
+.delete-button span {
+  font-size: 12px;
+  color: #586454;
+  font-weight: bold;
+}
+
+.add-button :first-child {
+  margin-bottom: 2px;
+}
+
+.up-to-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-ui-button {
+  background-color: #eef4ee;
+  margin: 1rem 0.5rem;
+  height: auto;
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 0.5rem;
+}
+
+.main-ui-button p {
+  margin: 1 auto;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.main-ui-button-radio {
+  padding-bottom: 1rem;
+}
+
+.buttons-row {
+  display: flex;
+}
+
+.jobs-group {
+  background-color: #84967e;
+  border-radius: 30px 30px 0 0;
+  padding-bottom: 1.5rem;
+  width: 100%;
+}
+
+.add-job-group {
+  background-color: #424b3f;
+  border-radius: 30px 30px 0 0;
+  padding-bottom: 1.5rem;
+  width: 100%;
+  display: none !important;
+}
+
+.add-job-container {
+  padding: 1rem;
+}
+
+.add-job-label {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.add-job-field {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #eef4ee;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #353535;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 0.5rem;
+}
+
+.add-job-field:hover {
+  background-color: #ffffff;
+}
+
+.add-job-field:active {
+  background-color: #ffffff;
+}
+
+.add-job-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-job-field-button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #424b3f;
+  background-color: #eef4ee;
+  border-radius: 10px;
+}
+
+.cancel-job-field-button:hover {
+  background-color: #ffffff;
+}
+
+.add-job-field-button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #424b3f;
+  background-color: #424b3f;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.add-job-btn {
+  margin: 0 0.5rem 1rem 0.5rem;
+  text-decoration: none !important;
+  color: black;
+}
+
+.add-job-field-button {
+  color: white !important;
+}
+
+.add-job-form {
+}
+
+.jobs-header-row {
+  align-items: center;
+}
+
+.jobs-group-header {
+  color: #eef4ee;
+  text-align: left;
+}
+
+.btn-row {
+  max-width: 400px;
+  padding-top: 1rem;
+}
+
+.btn-filter {
+  text-decoration: none !important;
+  color:black;
+  background-color: #a8bba1;
+  border: none;
+  width: 100px;
+  border-radius: 6.5px;
+}
+
+.btn-filter:hover {
+  background-color: #cbd6c7;
+}
+
+.btn-filter-active {
+  background-color: #eef4ee;
+}
+
+.notes-group {
+  background-color: #dfe9dc;
+  height: 100%;
+  width: 100%;
+}
+
+.notes-group-header {
+  color: #556454;
+  text-align: left;
+}
+
+.notes-group-container {
+  margin-bottom: 4rem;
+}
+
+.notes-group-container hr {
+  border: none;
+  height: 0.5px;
+  background-color: #000000;
+}
+
+.padded-row {
+  padding: 2rem 1.5rem 0 1.5rem;
+}
+
+.radio {
+  margin: 0.5rem;
+  position: absolute;
+  opacity: 0;
+}
+
+.radio {
+  margin: 0.5rem;
+}
+
+.circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #84967e;
+  margin: 0 auto;
+}
+
+.add-note-group-header {
+  color: #ffffff;
+  text-align: left;
+}
+
+.add-note-group {
+  background-color: #a7afa5;
+  padding-bottom: 1.5rem;
+  width: 100%;
+  display: none !important;
+}
+
+footer {
+  position: absolute;
+  bottom: 1px;
+  left: 15px;
+  font-size: 0.75rem;
+}

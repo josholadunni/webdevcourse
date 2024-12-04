@@ -1,7 +1,5 @@
 <%- include('partials/header.ejs') %>
 
-<h1>Book Notes</h1>
-
 <div class="page-container">
   <div class="add-book" style="display: inline-block;">
     <h2 class="add-book-title">Add Book</h2>
@@ -40,10 +38,25 @@
 </div>
 
 <script>
+  $(function() {
   $(".view-notes").on("click", function() {
-    
+    let bookName = $(this).parent().children().first().text();
+    console.log(bookName);
+    fetch('/view-notes?name=' + encodeURIComponent(bookName), {
+      method: 'GET',
+    })
+    .then(response => {
+      if (response.redirected) {
+        window.location.href = response.url;
+      } else {
+        console.error('Failed to redirect');
+      }
+    })
     });
+  })
 
 </script>
+
+
 
 <%- include('partials/footer.ejs') %>
