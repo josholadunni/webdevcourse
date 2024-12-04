@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
-const bearerKey = "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";
+const bearerKey = process.env.BEARER_KEY;
 
 const config = {
   headers: { Authorization: `Bearer ${bearerKey}` },

@@ -12,7 +12,7 @@ const API_URL = "https://secrets-api.appbrewery.com";
 // https://secrets-api.appbrewery.com/
 
 //TODO 1: Add your own bearer token from the previous lesson.
-const yourBearerToken = "9acecc7d-d228-49fe-81d6-66b8591ac8cc";
+const yourBearerToken = process.env.BEARER_TOKEN;
 
 const config = {
   headers: { Authorization: `Bearer ${yourBearerToken}` },
