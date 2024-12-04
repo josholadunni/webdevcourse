@@ -1,0 +1,86 @@
+<%- include("partials/header.ejs") %>
+
+<%- include("partials/date.ejs") %>
+
+<%- include("partials/jobs.ejs") %>
+
+<div class="row notes-group text-center">
+  <div class="container">
+    <div class="row padded-row">
+      <div class="col">
+        <h2 class="notes-group-header">Notes</h2>
+      </div>
+      <div class="col">
+        <span class="add-button">
+          <span>
+            +
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="row padded-sides">
+      <div class="container notes-group-container">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            Lorem
+            <hr>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-8">
+            Lorem
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row add-note-group">
+  <div class="container">
+    <div class="row jobs-header-row padded-row">
+      <div class="col text-center">
+        <h2 class="jobs-group-header">Notes</h2>
+      </div>
+      <div class="col text-center">
+        <span class="add-button">
+          <span>+</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row padded-row justify-content-center text-center buttons-row">
+
+      <div class="col-sm-12 col-md-12 col-lg-5  main-ui-button">
+        <div class="container add-job-container">
+          <h6 class="add-job-label">Add Note</h6>
+
+          <form class="add-job-form" action="/submit-note" method="POST">
+            <input type="text" id="add-note-field" class="add-job-field" name="Add-note" required>
+            <br>
+            <div class="row add-job-btn-row">
+              <input class="col-3 add-job-btn cancel-job-field-button" type="reset" value="Cancel" onclick="">
+              <input class="col-3 add-job-btn add-job-field-button" type="submit" value="Add Note">
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script src="/jquery/jquery.min.js"></script>
+<script src="scripts/scripts.js"></script>
+
+<%- include("partials/footer.ejs") %>

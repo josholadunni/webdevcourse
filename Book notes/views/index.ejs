@@ -1,0 +1,62 @@
+<%- include('partials/header.ejs') %>
+
+<div class="page-container">
+  <div class="add-book" style="display: inline-block;">
+    <h2 class="add-book-title">Add Book</h2>
+    <form action="/add-book" method="POST">
+      <label for="book-title">Book Title</label>
+      <input id="book-title" type="text" placeholder="Book Title" name="bookTitle">
+      <label for="book-rating">Book Rating</label>
+      <input id="book-rating" type="text" placeholder="Book Rating" name="bookRating">
+      <label for="book-date">Book Date</label>
+      <input id="book-date" type="text" placeholder="Book Date" name="bookDate">
+      <input type="hidden" value="<%= user.user_id %>" name="userId">
+      <label for="book-desc">Book Description</label>
+      <input id="book-desc" type="text" placeholder="Book Description" name="bookDesc">
+      <label for="book-isbn">Book ISBN</label>
+      <input id="book-isbn" type="text" placeholder="Book ISBN" name="bookISBN">
+      <button type="submit">Add Book</button>
+    </form>
+  </div>
+
+  <div class="book-section">
+    <% books.forEach(book => { %>
+
+    <div class="book-group">
+      <img class="book-cover" src="https://covers.openlibrary.org/b/isbn/<%=`${book.isbn}`%>-M.jpg">
+      <div class="book-details">
+        <h2 class="book-title"><%= book.title %></h2>
+        <p class="book-date"><%= book.date_read %></p>
+        <p class="book-rating"><%= book.rating %></p>
+        <p class="book-description"><%= book.description %></p>
+        <button class="view-notes">View Notes</button>
+      </div>
+    </div>
+
+    <% }); %>
+  </div>
+</div>
+
+<script>
+  $(function() {
+  $(".view-notes").on("click", function() {
+    let bookName = $(this).parent().children().first().text();
+    console.log(bookName);
+    fetch('/view-notes?name=' + encodeURIComponent(bookName), {
+      method: 'GET',
+    })
+    .then(response => {
+      if (response.redirected) {
+        window.location.href = response.url;
+      } else {
+        console.error('Failed to redirect');
+      }
+    })
+    });
+  })
+
+</script>
+
+
+
+<%- include('partials/footer.ejs') %>
