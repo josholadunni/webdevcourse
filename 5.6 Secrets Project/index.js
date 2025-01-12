@@ -17,7 +17,7 @@ import axios from "axios";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 3000;
+const port = 3002;
 const API_URL = "https://secrets-api.appbrewery.com";
 
 const yourBearerToken = "9acecc7d-d228-49fe-81d6-66b8591ac8cc";

@@ -2,7 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
 import axios from "axios";
-require("dotenv").config(); // Load environment variables from .env file
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
